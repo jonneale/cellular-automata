@@ -29,7 +29,7 @@ function drawGrid(){
 			context.fillStyle = NOTHING_COLOUR;
 		}
 		var xValue = index % HEIGHT;
-		context.fillRect(xValue*PIXEL_WIDTH,HEIGHT*PIXEL_HEIGHT-(yValue*PIXEL_HEIGHT),PIXEL_WIDTH,PIXEL_HEIGHT);
+		context.fillRect(xValue*PIXEL_WIDTH,HEIGHT*PIXEL_HEIGHT-(yValue*PIXEL_HEIGHT) - PIXEL_HEIGHT,PIXEL_WIDTH,PIXEL_HEIGHT);
 	}
 }
 
