@@ -1,7 +1,9 @@
 "use strict"
 
-const ground = [50,1,1,1,1,1,1,1,1,1,1,1,1,1,20,20,20,1,1,1,10,11,12,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,50]
-const water = [0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0];
+const ground = [50,1,1,1,1,1,1,1,1,1,1,1,1,1,20,19,18,17,5,5,8,10,10,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,50]
+const water = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,40,40,40,40,0,0];
+// const ground = [50,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,20,1,1,1,1,1,1,20,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,50]
+// const water = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
 const WIDTH = 50;
@@ -46,14 +48,14 @@ function updateGrid(){
 			deltaEnergy[i-1] += -energy[i-1] / 2 - flow;
 		}
 		if (ground[i] + water[i] + energy[i] > ground[i+1] + water[i+1] - energy[i+1]) {
-  			var flow = Math.min(water[i], ground[i] + water[i] + energy[i] - ground[i+1] - water[i+1] + energy[i+1]) / 4.0
+  			var flow = Math.min(water[i], ground[i] + water[i] + energy[i] - ground[i+1] - water[i+1] + energy[i+1]) / 4.0;
   			deltaWater[i+1]  += flow
   			deltaWater[i]    += -flow
   			deltaEnergy[i+1] += -energy[i+1] / 2 + flow
   		}
 	}
 	for (var index = 0; index < WIDTH; index++) {
-		water[index] += dwater[index];
+		water[index] += deltaWater[index];
 		energy[index] += deltaEnergy[index];
 	}
 }
@@ -69,7 +71,7 @@ function increaseWater(event){
 function run(){
 	updateGrid();	
 	drawGrid();
-	setTimeout(run, 50);	
+	setTimeout(run, 16);	
 }	
 
 canvas.addEventListener('click', increaseWater, false);

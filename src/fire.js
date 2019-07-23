@@ -36,8 +36,8 @@ const COLOURS = ['#070707',
       '#EFEFC7',        
       '#FFFFFF'];
 
-const WIDTH = 200;
-const HEIGHT = 200;
+const WIDTH = 160;
+const HEIGHT = 160;
 const PIXEL_WIDTH = 5;
 const PIXEL_HEIGHT = 5;
 
@@ -51,7 +51,7 @@ function drawGrid(){
 		var valueOfCell = grid[index];
 		context.fillStyle = COLOURS[valueOfCell] || '#070707';
 		var yValue = (index/WIDTH) | 0;
-		var xValue = index % WIDTH;
+		var xValue = index % HEIGHT;
 		context.fillRect(xValue*PIXEL_WIDTH,(yValue*PIXEL_HEIGHT),PIXEL_WIDTH,PIXEL_HEIGHT);
 	}
 }
@@ -65,8 +65,8 @@ function zeroGrid(){
 }
 
 function spreadFire(src){
-	var rand = (Math.random() * 3.0) | 0;
-	var dst = src - rand + 1;
+    var rand = (Math.random() * 3.0) | 0;
+    var dst = src - rand + 1;
     grid[dst - WIDTH] = grid[src] - (rand & 1);
 }
 

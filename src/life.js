@@ -6,18 +6,18 @@ const WIDTH = 50;
 const HEIGHT = 50;
 const PIXEL_WIDTH = 10;
 const PIXEL_HEIGHT = 10;
-const colours = ["#fff","#333"];
+const COLOURS = ["#fff","#333"];
 const NEIGHBOUR_COORDS = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
 const grid = Array(WIDTH*HEIGHT).fill(0);
 
 function randomBlock(){
-	return parseInt(Math.random()*colours.length)
+	return parseInt(Math.random()*COLOURS.length)
 }
 
 function drawGrid(){
 	for (var index = 0; index < WIDTH*HEIGHT; index++) {
 		var valueOfCell = grid[index];
-		context.fillStyle = colours[valueOfCell];
+		context.fillStyle = COLOURS[valueOfCell];
 		var yValue = parseInt(index/WIDTH);
 		var xValue = index % WIDTH;
 		context.fillRect(xValue*PIXEL_WIDTH,yValue*PIXEL_HEIGHT,PIXEL_WIDTH,PIXEL_HEIGHT);

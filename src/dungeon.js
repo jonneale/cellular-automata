@@ -2,7 +2,7 @@
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
 const survivalThreshold = 5;
-const birthThreshold = 6;
+const birthThreshold = 7;
 const initializationChance = 0.45;
 const PIXEL_WIDTH = 5;
 const PIXEL_HEIGHT = 5;
@@ -33,11 +33,11 @@ function countNeighbours(cell, grid){
     return NEIGHBOUR_COORDS.reduce(function(accumulator,v){
         var coord = cell + v[0] + (WIDTH * v[1]);
         if (coord < 0 || coord > WIDTH*HEIGHT) {
-          return accumulator + 1;
+          return accumulator + 1;      //out of bounds north or south
         } else if ((cell % WIDTH == 0) && v[0] < 0) {
-            return accumulator + 1;
+            return accumulator + 1;    //out of  bounds west
         } else if (((cell+1) % WIDTH == 0) && v[0] > 0) {
-            return accumulator + 1;
+            return accumulator + 1;    //out of bounds east
         } else {
             return accumulator + grid[coord];
         }   
