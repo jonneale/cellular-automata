@@ -1,5 +1,5 @@
 "use strict"
-var COLOURS = ['#070707',
+const COLOURS = ['#070707',
       '#1f0707',
       '#2f0f07',
       '#470f07',
@@ -36,12 +36,14 @@ var COLOURS = ['#070707',
       '#EFEFC7',        
       '#FFFFFF'];
 
-var canvas = document.querySelector("canvas");
-var context = canvas.getContext("2d");
-var WIDTH = 200;
-var HEIGHT = 200;
-var PIXEL_WIDTH = 5;
-var PIXEL_HEIGHT = 5;
+const WIDTH = 200;
+const HEIGHT = 200;
+const PIXEL_WIDTH = 5;
+const PIXEL_HEIGHT = 5;
+
+const canvas = document.querySelector("canvas");
+const context = canvas.getContext("2d");
+
 var grid = [];
 	
 function drawGrid(){
@@ -49,7 +51,7 @@ function drawGrid(){
 		var valueOfCell = grid[index];
 		context.fillStyle = COLOURS[valueOfCell] || '#070707';
 		var yValue = (index/WIDTH) | 0;
-		var xValue = index % HEIGHT;
+		var xValue = index % WIDTH;
 		context.fillRect(xValue*PIXEL_WIDTH,(yValue*PIXEL_HEIGHT),PIXEL_WIDTH,PIXEL_HEIGHT);
 	}
 }

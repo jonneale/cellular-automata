@@ -1,14 +1,14 @@
 "use strict"
 
-var canvas = document.querySelector("canvas");
-var context = canvas.getContext("2d");
-var WIDTH = 50;
-var HEIGHT = 50;
-var PIXEL_WIDTH = 10;
-var PIXEL_HEIGHT = 10;
-var grid = Array(WIDTH*HEIGHT).fill(0);;
-var colours = ["#fff","#333"];
-var NEIGHBOUR_COORDS = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
+const canvas = document.querySelector("canvas");
+const context = canvas.getContext("2d");
+const WIDTH = 50;
+const HEIGHT = 50;
+const PIXEL_WIDTH = 10;
+const PIXEL_HEIGHT = 10;
+const colours = ["#fff","#333"];
+const NEIGHBOUR_COORDS = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
+const grid = Array(WIDTH*HEIGHT).fill(0);
 
 function randomBlock(){
 	return parseInt(Math.random()*colours.length)
@@ -19,7 +19,7 @@ function drawGrid(){
 		var valueOfCell = grid[index];
 		context.fillStyle = colours[valueOfCell];
 		var yValue = parseInt(index/WIDTH);
-		var xValue = index % HEIGHT;
+		var xValue = index % WIDTH;
 		context.fillRect(xValue*PIXEL_WIDTH,yValue*PIXEL_HEIGHT,PIXEL_WIDTH,PIXEL_HEIGHT);
 	}
 }

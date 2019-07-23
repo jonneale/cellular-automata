@@ -19,7 +19,7 @@ function runCA() {
 			var valueOfCell = grid[index];
 			context.fillStyle = colours[valueOfCell];
 			var yValue = parseInt(index/WIDTH);
-			var xValue = index % HEIGHT;
+			var xValue = index % WIDTH;
 			context.fillRect(xValue*PIXEL_WIDTH,yValue*PIXEL_HEIGHT,PIXEL_WIDTH,PIXEL_HEIGHT);
 		}
 	}
