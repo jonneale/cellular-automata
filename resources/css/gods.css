@@ -1,0 +1,12 @@
+.god{
+	display:block;
+	margin: 10px 10px;
+}
+.god canvas {
+	margin-right: 10px;
+}
+.god span {
+	font-family: "tahoma";
+	vertical-align: top;
+	font-size: 40px;
+}
